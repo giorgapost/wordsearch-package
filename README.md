@@ -40,16 +40,19 @@ While the first one helps to get acquainted with the software, the latter one ma
 > When integrating the package to larger applications do not forget to call [terminate()](https://github.com/giorgapost/wordsearch-package/blob/d6124c653c18e11111da905ff3d5022bbbfe89b0/wordsearch/WordSearch.java#L228) before exiting the program.
 
 ## Compilation
-The package is provided with the 'Examples.java' class which contains 2 examples on its utilization, and it can be easily integrated into any system.
-To compile and execute the provided example code run:
+The package is accompanied by the [Examples.java](Examples.java) class which contains 2 examples of its integration into the code of other applications.
+To compile and execute the provided examples simply comment/uncomment the desired example in [main()](https://github.com/giorgapost/wordsearch-package/blob/7bca34d043a44968ca1d9af74f6848975efde621/Examples.java#L15) and run:
+```
+javac -d classes Examples.java
+java -classpath "classes" Examples input/        #Provide as argument the directory of the input ASCII files.
+```
 
-javac -d classes Examples.java #To compile the .java files into .class binaries.
-java -classpath "classes" Examples input/ #Provide as argument the location of the input ASCII files.
-
-To compile the documentation through the javadoc tool run:
-
+To generate the documentation with the [javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html) tool run:
+```
 javadoc -d doc wordsearch wordsearch.structures wordsearch.file wordsearch.structures.btree wordsearch.structures.index #To generate documentation
+```
 
-Finally, to compile package wordsearch alone (which contains the implementation of the system), use the following command:
-
+Finally, to compile package wordsearch alone (which contains the implementation of the described system), use:
+```
 javac -d classes wordsearch/WordSearch.java
+```
