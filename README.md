@@ -1,5 +1,5 @@
 # Java package to search for words in ASCII files
-This package implements a system which searches for some given words into a large number of text files, and returns all the locations where they were found. 
+The `wordsearch` package implements a system which searches for some given words into multiple text files, and returns all the locations where they were found. 
 
 > **Note**  
 > As 'word' is defined every sequence of characters separated with one or more spaces or the following punctuation symbols:
@@ -49,10 +49,11 @@ java -classpath "classes" Examples input/        #Provide as argument the direct
 
 To generate the documentation with the [javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html) tool run:
 ```
-javadoc -d doc wordsearch wordsearch.structures wordsearch.file wordsearch.structures.btree wordsearch.structures.index #To generate documentation
+javadoc -d doc wordsearch wordsearch.structures wordsearch.file wordsearch.structures.btree wordsearch.structures.index
 ```
+Then, go to a new subdirectory called `doc/` and open a file named `index.html` with your browser.
 
-Finally, to compile package wordsearch alone (which contains the implementation of the described system), use:
+Finally, to compile package `wordsearch` alone (which contains the implementation of the described system), use:
 ```
 javac -d classes wordsearch/WordSearch.java
 ```
