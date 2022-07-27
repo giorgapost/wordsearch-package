@@ -7,10 +7,8 @@ This package implements a system which searches for some given words into a larg
 > \t,  \n,  ',',  '.',  '!',  '-',  '(',  ')',  '"',  ''',  ':',  ';',  '?'
 > ```
 
-File [Examples.java](Examples.java) provides examples for the 2 alternative ways in which the package may be utilized. The simplest one is calling the answerQuestions() method, which provides a basic user interface (through console) and allows the user to type the word he needs to search for.
-The other alternative passes the words as argument to the method, and the list with their occurrences is provided as the return value of the method. While the first one helps to get acquainted with the software, the latter one may be more useful in most applications.
-
-Note: Analytical documentation for the package can be created with the javadoc tool (see below).
+> **Note**  
+> Analytical documentation for the source code of the package can be generated with the [javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html) tool (see below).
 
 ## Implementation details
 The system consists of a [B-Tree](https://en.wikipedia.org/wiki/B-tree) structure, as well as of a paged index. 
@@ -22,13 +20,24 @@ After all, when the system is asked to search for a word, it crosses the BTree (
 > **Warning**  
 > Both the B-Tree and the index structures have to be built before any search operation takes place.
 
-This package implements both the BTree and the index in a file on the disk. That means that every operation is written immediately, and when a page is required
-it has to be read from the disk again. The purpose of this technique is to minimize the memory usage as much as possible, even with the cost of a slower execution. Of course,
-a hybrid or exclusively-in-RAM implementation is also possible.
+This Java package implements both the B-Tree and the index in some binary files on the disk. Every operation on these structures is written immediately, and every required piece of data has to be read from the disk again. What is more, the data of the binary files are separated into pages of predetermined size, and every read/write operation takes place on exactly one page. The purpose of this technique is to minimize the memory usage as much as possible, even at the cost of a slower execution. Of course a hybrid or exclusively-in-RAM implementation is also possible.
 
-Notice that the construction of such structures may take enough time, especially for large inputs. However, once the construction has been completed, the search for
-a word is a very efficient procedure. Rebuilding of the structures has to take place only in the case where the input changes, and every time it builds the data structures
-of the system from scratch.
+Notice that the construction of such structures may take enough time, especially when the input is large, due to the large number of disk operations. However, once the construction has been completed the search for a word is a very quick process, since very few pages have to be read from the B-Tree and the index structures (compared to their total size).
+
+> **Warning**  
+> Every time when the contents of the input text files change, both the B-Tree and the index have to be rebuilt through the [buildDataFiles()](https://github.com/giorgapost/wordsearch-package/blob/d6124c653c18e11111da905ff3d5022bbbfe89b0/wordsearch/WordSearch.java#L155) method. While there are special cases where they may be adapted to the new input without a rebuild from scratch, this is not the case of the current implementation. In order to guarantee valid results, the user has to recreate both structures after any change of the input.
+
+> **Note**  
+> When the input remains unchanged, the B-Tree and the index do not have to be generated more than once. Questions to search for can be given to the system right after its execution.
+
+File [Examples.java](Examples.java) provides examples of 2 alternative ways in which the package may be utilized.
+- The simplest one calls the [answerQuestions()](https://github.com/giorgapost/wordsearch-package/blob/d6124c653c18e11111da905ff3d5022bbbfe89b0/wordsearch/WordSearch.java#L78) method, which provides a basic user interface (through console) and allows the user to type the word he needs to search for. 
+- The other way passes the words as argument to the [method](https://github.com/giorgapost/wordsearch-package/blob/d6124c653c18e11111da905ff3d5022bbbfe89b0/wordsearch/WordSearch.java#L122), and the list with their occurrences is provided as the return value. 
+
+While the first one helps to get acquainted with the software, the latter one may be more useful in most applications.
+
+> **Warning**  
+> When integrating the package to larger applications do not forget to call [terminate()](https://github.com/giorgapost/wordsearch-package/blob/d6124c653c18e11111da905ff3d5022bbbfe89b0/wordsearch/WordSearch.java#L228) before exiting the program.
 
 ## Compilation
 The package is provided with the 'Examples.java' class which contains 2 examples on its utilization, and it can be easily integrated into any system.
