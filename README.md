@@ -1,4 +1,4 @@
-# Java package to search for words in ASCII files
+# A Java package to search for words in ASCII files
 The `wordsearch` package implements a system which searches for some given words into multiple text files, and returns all the locations where they were found. 
 
 > **Note**  
