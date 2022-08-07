@@ -26,7 +26,7 @@ The system consists of 2 major subsystems:
 - A [B-Tree](https://en.wikipedia.org/wiki/B-tree) structure. Every record on the tree consists of a key,
 which is the word we search for, as well as of an integer which points to a page of another structure.
 That structure contains all the locations where this word can be found in the input text files.
-- A paged index structure. Every page of the index contains a predetermined number of records. Each record consists
+- A paged Index structure. Every page of the Index contains a predetermined number of records. Each record consists
 of one String (filename) and one integer (bytes from the file's beginning) and corresponds to a specific point
 of the input text files. Consequently, to retrieve the locations where a given word can be found in the input text files,
 we have to read all entries from the appropriate page of the index. What is more, every page contains an integer which
@@ -39,7 +39,7 @@ If the occurrences are too much, then a "chain" of index pages has been created 
 and the system returns the contents of the whole chain.
 
 > **Warning**  
-> Both the B-Tree and the index structures have to be built before any search operation takes place.
+> Both the B-Tree and the Index structures have to be built before any search operation takes place.
 Moreover, they have to be rebuilt every time when the contents of the input ASCII files change.
 
 This Java package implements both the B-Tree and the index in some binary files on the disk.
@@ -51,11 +51,11 @@ possible, even at the cost of increased disk operations.
 
 Notice that the construction of such structures may take enough time, especially when the input is large, due
 to the high number of disk operations. However, once the construction has been completed, the search for a word
-is a very quick process, since very few pages have to be read from the B-Tree and the index structures (compared
+is a very quick process, since very few pages have to be read from the B-Tree and the Index structures (compared
 to their total sizes).
 
 > **Note**  
-> When the input remains unchanged, the B-Tree and the index do not have to be generated more than once.
+> When the input remains unchanged, the B-Tree and the Index do not have to be generated more than once.
 The system may be restarted and questions can be given right after its initialization.
 
 ## Getting Started
@@ -73,7 +73,7 @@ git clone https://github.com/giorgapost/wordsearch-package
 cd wordsearch-package
 ```
 
-Then, to compile it and get the `.class` files into a subdirectory named `\classes\` run:
+Then, to compile it and get the `.class` files into a subdirectory named `\classes\`, simply run:
 ```bash
 javac -d classes wordsearch/WordSearch.java
 ```
@@ -95,7 +95,7 @@ File [Examples.java](Examples.java) provides examples of 2 alternative ways in w
 
 In both examples the
 [buildDataFiles()](https://github.com/giorgapost/wordsearch-package/blob/d6124c653c18e11111da905ff3d5022bbbfe89b0/wordsearch/WordSearch.java#L155)
-method constructs the binary files on disk which contain the B-Tree and the index structures required by the package.
+method constructs the binary files on disk which contain the B-Tree and the Index structures required by the package.
 Thus, it has to be called *only* when the input ASCII files change (and not at every execution of the algorithm). 
 
 > **Warning**  
