@@ -87,7 +87,7 @@ Finally, to generate detailed documentation with the [javadoc](https://docs.orac
 ```
 javadoc -d doc wordsearch wordsearch.structures wordsearch.file wordsearch.structures.btree wordsearch.structures.index
 ```
-Then, go to a new subdirectory called `doc/` and open the file named `index.html` with any browser.
+Then, go to a new subdirectory called `/doc/` and open the file named `index.html` with any browser.
 
 ## Usage
 
