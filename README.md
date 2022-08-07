@@ -51,7 +51,7 @@ To generate the documentation with the [javadoc](https://docs.oracle.com/javase/
 ```
 javadoc -d doc wordsearch wordsearch.structures wordsearch.file wordsearch.structures.btree wordsearch.structures.index
 ```
-Then, go to a new subdirectory called `doc/` and open a file named `index.html` with your browser.
+Then, go to a new subdirectory called ``doc/`` and open a file named `index.html` with your browser.
 
 Finally, to compile package `wordsearch` alone (which contains the implementation of the described system), use:
 ```
