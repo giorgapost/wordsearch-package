@@ -73,7 +73,7 @@ git clone https://github.com/giorgapost/wordsearch-package
 cd wordsearch-package
 ```
 
-Then, to compile it and get the `.class` files into a subdirectory named `\classes\`, simply run:
+Then, to compile it and get the `.class` files into a subdirectory named `/classes/`, simply run:
 ```bash
 javac -d classes wordsearch/WordSearch.java
 ```
@@ -87,7 +87,7 @@ Finally, to generate detailed documentation with the [javadoc](https://docs.orac
 ```
 javadoc -d doc wordsearch wordsearch.structures wordsearch.file wordsearch.structures.btree wordsearch.structures.index
 ```
-Then, go to a new subdirectory called `doc/` and open a file named `index.html` with any browser.
+Then, go to a new subdirectory called `doc/` and open the file named `index.html` with any browser.
 
 ## Usage
 
